@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Ex2 WevDev2 Couse by EranReuven 205410848</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.getElementById('less02').style.display = "none";
+
+            function hideElement(e) {
+                e.style.display = "none";
+            }
+
+            function showElement(e) {
+                e.style.display = "block";
+            }
+            function more() {
+                hideElement(this); //hiding the button that called to the function
+                showElement(this.nextElementSibling);
+                showElement(this.nextElementSibling.nextElementSibling);
+
+                var child = this.parentElement.parentElement.parentElement.parentElement.children;
+
+            }
+            function less() {
+                    hideElement(this);
+                    showElement(this.previousElementSibling);
+                    hideElement(this.nextElementSibling);
+
+            }
+
+            document.getElementById('more02').addEventListener('click', more);
+            document.getElementById('less02').addEventListener('click', less);
+
+        });
+
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-2 mt-3"><img src="http://cs.hac.ac.il/design/hadassah-logo.png" class="img-thumbnail"></div>
+        <div class="col-9 alert alert-warning mt-3"><h2>Eran README template</h2></div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-3 h-50" style="background-color:lavender;">
+            <h2>Internet course</h2>
+            <ul>
+                <li>Hadassah Academic College</li>
+                <li>Year: 2019-20</li>
+                <li>Semester: B</li>
+            </ul>
+            <hr>
+            <a href="https://mowgli.hac.ac.il/course/view.php?id=12895" target="_blank" class="btn btn-outline-primary" role="button">Enter the site from here</a>
+
+        </div>
+
+
+        <div class="col-sm-3 col-mt-2">
+            <div class="card" style="width: 18rem;">
+                <img src="https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg" class="card-img-top" alt="hmmm">
+                <div class="card-body">
+                    <h5 class="card-title">Eran Reuven</h5>
+                    <p id="lesscontent02" class="card-text">Email: eranrvn@gmail.com <br> ID: 205410848</p>
+                    <button id="more02" class="btn btn-primary">Show More</button>
+                    <button id="less02" class="btn btn-primary">Show Less</button>
+                    <p id="more-content-02" style="display:none">My name is Eran Reuven, I am a computer science student.
+                        <br>I love go to the gym and go out with friends.<br>My profession is Graphic Design and I have a private business with a partner. We build websites, design logos, banners, stickers and more. Also, promoting businesses.<br></p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <h1>Readme for ex3</h1>
+            <p>In this exercise we asked to creates a GitHub search application similar to what we made
+            last semester, but with SpringBoot and Thymeleaf template engine. We presenting history of searches
+                from the database and have login page that only available when you logged out. To log in:
+                <br> username: Admin<br> password: 1234</p>
+            <hr>
+            <h3>Client - Side</h3>
+            <p>The client side is containing the following files:</p>
+            <ul>
+                <li>Index.html - The main page and the only one in this app.
+                content inserting the page dynamically. by Thymeleaf and AJAX (history)</li>
+                <li>error.html - the error page</li>
+                <li>login.html - the login page</li>
+                <li>headinclude fragment - to include head includes</li>
+                <li>navbar fragment - to include the navbar</li>
+                <li>GHSstyle.css - The custom Stylesheet of the app.</li>
+                <li>HistoryApp.js - The History application. it fetching from the server
+                a json list of users and injecting it to the document.
+                <li>mainApp.js - only to hide alerts after 5 seconds.</li>
+            </ul>
+            <hr>
+            <h3>Server - Side</h3>
+            <p>The server side containing the following servlets and classes:</p>
+            <ul>
+                <h4>Beans</h4>
+                <ul>
+                  <li>LoginBean - login form object and validation</li>
+                  <li>LoginConstraint and LoginValidator are custom Validators for LoginBean fields.</li>
+                  <li>DatabaseHandlerBean - to handle database conversations</li>
+                  <li>JsonConverterBean - to handle Json conversion</li>
+                  <li>LoginSessionBean - to handle login flag in session</li>
+                  <li>URLHandlerBean - to handle url for search API</li>
+              </ul>
+                <h4>Controllers:</h4>
+                <ul>
+                    <li>CustomErrorController - Handle /error requests</li>
+                    <li>DeleteController - Handle /delete requests</li>
+                    <li>GHSearchController - Handle /do-search requests</li>
+                    <li>HistoryController - Handle /history requests</li>
+                    <li>LoginController - Handle /login requests</li>
+                    <li>LogoutController - Handle /logout requests</li>
+                    <li>MainController - Handle / requests</li>
+                </ul>
+                <h4>Filters:</h4>
+                <ul><li>LoggingInterceptor - to block and redirect login if not logged in.</li></ul>
+                <h4>Repo:</h4>
+                <ul>
+                    <li>GHuser - the object entity bean we inserting to the DB</li>
+                    <li>UserRepository - to send queries to the database.</li>
+                </ul>
+                <h4>Application files:</h4>
+                <ul>
+                    <li>Application</li>
+                    <li>MyConfig</li>
+                </ul>
+            </ul>
+
+            <h4>JavaDoc API</h4>
+                    <li><a href="./src/resources/static/JavaDoc/index.html" target="_blank">Click here to open the JavaDoc </a> </li> <hr>
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
